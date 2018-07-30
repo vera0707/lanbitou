@@ -1,9 +1,11 @@
 const path = require('path');
 const glob = require('glob');
+const webpack = require("webpack");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const PurifyCSSPlugin = require('purifycss-webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -35,6 +37,16 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env','react']
+                    }
+                }
             }
         ]
     },
@@ -46,8 +58,29 @@ module.exports = {
         new ExtractTextPlugin("common.css"),
         new PurifyCSSPlugin({
             paths: glob.sync(path.join(__dirname, 'src/*.html'))
-        })
+        }),
+        //new CopyWebpackPlugin([
+        //    {
+        //        from: 'path/to/file.txt',
+        //        to: 'file/without/extension',
+        //        toType: 'file'
+        //    }
+        //])
+        new webpack.ProvidePlugin({
+            react: 'react'
+        }),
     ],
+    optimization:{
+        splitChunks: {
+            cacheGroups: {
+                name1:{
+                    chunk: 'initial',
+                    name: 'react',
+                    enforce: true
+                }
+            }
+        }
+    },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
