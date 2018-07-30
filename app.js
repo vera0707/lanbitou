@@ -18,15 +18,9 @@ const CONFIG = {
 };
 
 app.use(serve(__dirname + '/dist'));
-app.use(bodyParser());   //调用中间件koa-bodyparser
+app.use(bodyParser());
 app.keys = ['some secret hurr'];
 app.use(session(CONFIG, app));
-
-
-// app.use('/',async (ctx,next)=>{
-//     ctx.render();
-//     await next();
-// });
 
 app.use(router.routes())
     .use(router.allowedMethods());
@@ -42,7 +36,7 @@ mongoose.Promise = global.Promise;
 
 db.on('error',console.error.bind(console, 'connection error:'));
 db.once('open',()=>{
-    console.log("已连接到数据库");
+    console.log("Successful connection to the database...");
     app.listen(3000);
     console.log('app started at port 3000...');
 });
