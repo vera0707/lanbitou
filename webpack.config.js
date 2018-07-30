@@ -8,7 +8,7 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 
 module.exports = {
     entry: {
-        main: './app/main.js'
+        main: './src/main.js'
     },
     output:{
         path: path.resolve(__dirname,'dist'),
@@ -41,11 +41,11 @@ module.exports = {
     plugins:[
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            template: './app/index.html'
+            template: './src/index.html'
         }),
         new ExtractTextPlugin("common.css"),
         new PurifyCSSPlugin({
-            paths: glob.sync(path.join(__dirname, 'app/*.html'))
+            paths: glob.sync(path.join(__dirname, 'src/*.html'))
         })
     ],
     devServer: {
