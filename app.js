@@ -22,11 +22,6 @@ app.use(bodyParser());
 app.keys = ['some secret hurr'];
 app.use(session(CONFIG, app));
 
-//app.use((ctx,next)=>{
-//
-//});
-
-
 app.use(router.routes())
     .use(router.allowedMethods());
 

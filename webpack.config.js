@@ -44,7 +44,7 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['env','react']
+                        presets: ["env","react"]
                     }
                 }
             }
@@ -56,31 +56,31 @@ module.exports = {
             template: './src/index.html'
         }),
         new ExtractTextPlugin("common.css"),
-        new PurifyCSSPlugin({
-            paths: glob.sync(path.join(__dirname, 'src/*.html'))
-        }),
-        //new CopyWebpackPlugin([
+        // new PurifyCSSPlugin({
+        //     paths: glob.sync(path.join(__dirname, 'src/*.html'))
+        // }),
+        // new CopyWebpackPlugin([
         //    {
         //        from: 'path/to/file.txt',
         //        to: 'file/without/extension',
         //        toType: 'file'
         //    }
-        //])
+        // ])
         new webpack.ProvidePlugin({
             react: 'react'
         }),
     ],
-    optimization:{
-        splitChunks: {
-            cacheGroups: {
-                name1:{
-                    chunk: 'initial',
-                    name: 'react',
-                    enforce: true
-                }
-            }
-        }
-    },
+    // optimization:{
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             react:{
+    //                 chunk: 'initial',
+    //                 name: 'react',
+    //                 enforce: true
+    //             }
+    //         }
+    //     }
+    // },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
