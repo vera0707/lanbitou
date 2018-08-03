@@ -58,6 +58,7 @@
     "koa-static": "^5.0.0",
     "mongoose": "^5.2.5",
     "prop-types": "^15.6.2",
-    "react-markdown": "^3.4.1"
+    "react-markdown": "^3.4.1",
+    "react-router-dom": "^4.3.1"
   }
 }
