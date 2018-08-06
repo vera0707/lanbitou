@@ -9,7 +9,8 @@ export class Edit extends React.Component{
     render(){
         return(
            <div className="edit">
-               <textarea onChange={this.props.onchange.bind(this,event)} name="edit_con" id=""  className="edit-con"></textarea>
+               <div className="edit-title">Markdown</div>
+               <textarea onChange={this.props.editChange} name="edit_con" id=""  className="edit-con"  value={this.props.editContent}></textarea>
            </div>
         )
     }

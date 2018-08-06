@@ -5,6 +5,7 @@
 }
 body,html{
   width: 100%;
+  font-size: 14px;
   font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
@@ -26,13 +27,12 @@ body, button, input, select, textarea {
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: "TimesNewRomanPS-ItalicMT", "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;
-  /*font-family: "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;*/
   -webkit-font-smoothing: initial;
   font-weight: 100;
   color: var(--text-color);
   line-height: 1.35;
   font-variant-numeric: lining-nums;
-  margin-bottom: 1em;
+  margin: 1em 0;
 }
 em {
   font-family: Georgia-Italic, STSongti-SC-Light, serif;
@@ -90,11 +90,6 @@ abbr {
 address, caption, cite, code, dfn, th, var {
   font-style: normal;
   font-weight: 400;
-}
-
-/* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
-ul, ol {
-  list-style: none;
 }
 
 /* 对齐是排版最重要的因素, 别让什么都居中 */
