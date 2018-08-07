@@ -7,7 +7,18 @@ body,html{
   width: 100%;
   font-size: 14px;
   font-family: Source Sans Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+  overflow: hidden;
 }
+.flex{
+  display: flex;
+}
+.flex-1{
+  flex: 1;
+}
+.flex-2{
+  flex: 1;
+}
+
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
 body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, menu, nav, section {
   margin: 0;
@@ -123,6 +134,7 @@ sub {
 /* 让链接在 hover 状态下显示下划线 */
 a {
   color: #1abc9c;
+  text-decoration: none;
 }
 
 a:hover {
