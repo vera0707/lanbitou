@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router,Route,Switch } from 'react-router-dom';
+import { BrowserRouter,Router,Route,Switch } from 'react-router-dom';
 import { history } from "./location";
 import './core.less';
 
@@ -27,7 +27,7 @@ import { RegisterComponent } from './pages/password/register';
 
 
 ReactDOM.render((
-    <Router history={history}>
+    <Router history={BrowserRouter}>
         <Switch>
             <Route path="/index" component={IndexComponent} />
             <Route path="/login" component={LoginComponent} />

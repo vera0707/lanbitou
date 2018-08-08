@@ -15,9 +15,9 @@ export class Header extends React.Component{
                         <div className="brand">lanbitou</div>
                     </div>
                     <div className="flex">
-                        <Link to={ `/login` }>登录</Link>
+                        <Link to="/login">登录</Link>
                         <div>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
-                        <Link to={ `/register` }>注册</Link>
+                        <Link to="/register">注册</Link>
                     </div>
                 </div>
             </header>
