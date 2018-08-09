@@ -17,6 +17,10 @@ const CONFIG = {
     renew: false
 };
 
+// app.use(history({
+//     verbose: true,
+//     index: '/'
+// }));
 app.use(serve(__dirname + '/dist'));
 app.use(bodyParser());
 app.keys = ['some secret hurr'];
@@ -27,7 +31,8 @@ app.use(router.routes())
 
 
 router.get('/',(ctx,next)=>{
-    ctx.render('index');
+    ctx.render(__dirname + '/dist/index.html');
+    next();
 });
 
 mongoose.connect('mongodb://172.16.0.91:27017');
