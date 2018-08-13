@@ -5,6 +5,7 @@ target
 .DS_Store
 *.svn*
 .svn
+.git
 *.iml
 .idea
 bak

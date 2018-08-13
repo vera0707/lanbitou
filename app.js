@@ -1,11 +1,12 @@
 const Koa = require("koa");
-const Router = require('koa-router');
 const serve = require('koa-static');
+const Router = require('koa-router');
 const bodyParser = require("koa-bodyparser");
 const session = require('koa-session');
-const router = new Router();
 const mongoose = require('mongoose');
+const controller = require('./controller');
 const app = new Koa();
+const router = new Router();
 
 const CONFIG = {
     key: 'koa:sess',
@@ -17,12 +18,11 @@ const CONFIG = {
     renew: false
 };
 
-// app.use(history({
-//     verbose: true,
-//     index: '/'
-// }));
+
 app.use(serve(__dirname + '/dist'));
-app.use(bodyParser());
+app.use(bodyParser({
+    enableTypes:['json', 'form', 'text']
+}));
 app.keys = ['some secret hurr'];
 app.use(session(CONFIG, app));
 
@@ -30,10 +30,7 @@ app.use(router.routes())
     .use(router.allowedMethods());
 
 
-router.get('/',(ctx,next)=>{
-    ctx.render(__dirname + '/dist/index.html');
-    next();
-});
+app.use(controller());
 
 mongoose.connect('mongodb://172.16.0.91:27017');
 const db = mongoose.connection;

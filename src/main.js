@@ -6,7 +6,6 @@ import './core.less';
 
 import { IndexComponent } from './pages/index/index';
 import { LoginComponent } from './pages/password/login';
-import { RegisterComponent } from './pages/password/register';
 import { ErrorComponent } from './pages/error/error';
 
 class mainRouter extends React.Component{
@@ -39,8 +38,8 @@ ReactDOM.render((
     <Router history={history}>
         <Switch>
             <Route path="/index" component={IndexComponent} />
-            <Route path="/password" component={PasswordRouter} />
-            <Route exact path="/" component={IndexComponent} />
+            <Route exact path="/password/:type" component={ LoginComponent} />
+            <Route exact path="/" component={ LoginComponent} />
             <Route path="*" component={ErrorComponent}/>
         </Switch>
     </Router>

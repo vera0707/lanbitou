@@ -1,5 +1,4 @@
-var mongoose = require('mongoose');
-//定义用户表结构
+const mongoose = require('mongoose');
 
 module.exports =   new mongoose.Schema({
     username: String,
