@@ -51,7 +51,6 @@ export class IndexComponent extends React.Component{
         const { creationTime,editContent,editName } = this.state;
         return(
             <div>
-                <Header />
                 <Describe  creationTime={creationTime} words={editContent.length} editName={editName} />
                 <div className="index-con"   style={{ height: window.screen.availHeight - 225 + 'px' }}>
                     <Edit editChange={ this.editChange.bind(this) } editBlur={ this.editBlur.bind(this)} editContent={ editContent }  />

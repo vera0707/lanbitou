@@ -33,7 +33,11 @@ let fn_login = async (ctx,next) =>{
                         code : 200,
                         message: `欢迎${username}回家`,
                         systemTime: getSystemDate()
-                    }
+                    };
+
+                    ctx.cookies.set('userInfo','lbt',{ username });
+                    console.log(ctx.cookies.get('userInfo'));
+                    console.log(ctx.cookies.get('lbt'));
 
                 }else{
                     responseData = {

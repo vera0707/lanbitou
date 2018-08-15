@@ -18,15 +18,13 @@ const CONFIG = {
     rolling: false,
     renew: false
 };
-
+app.use(history({ verbose: true }));
 app.use(serve(__dirname + '/dist'));
-
 app.use(bodyParser({
     enableTypes:['json', 'form', 'text']
 }));
 app.keys = ['some secret hurr'];
 app.use(session(CONFIG, app));
-app.use(history({ verbose: true}));
 app.use(router.routes())
     .use(router.allowedMethods());
 
