@@ -5,6 +5,7 @@ const bodyParser = require("koa-bodyparser");
 const session = require('koa-session');
 const mongoose = require('mongoose');
 const controller = require('./controller');
+const history = require('./middleware/koa2-connect-history-api-fallback');
 const app = new Koa();
 const router = new Router();
 
@@ -18,17 +19,16 @@ const CONFIG = {
     renew: false
 };
 
-
 app.use(serve(__dirname + '/dist'));
+
 app.use(bodyParser({
     enableTypes:['json', 'form', 'text']
 }));
 app.keys = ['some secret hurr'];
 app.use(session(CONFIG, app));
-
+app.use(history({ verbose: true}));
 app.use(router.routes())
     .use(router.allowedMethods());
-
 
 app.use(controller());
 

@@ -12,12 +12,15 @@ export class Header extends React.Component{
             <header className="header">
                 <div className="header-con flex">
                     <div>
+                        <img className="logo" src={require("./../../assets/logo.png")} alt=""/>
                         <div className="brand">lanbitou</div>
                     </div>
                     <div className="flex">
-                        <Link to="/login">登录</Link>
-                        <div>&nbsp;&nbsp;|&nbsp;&nbsp;</div>
-                        <Link to="/register">注册</Link>
+                        <img className="user-avatar" src={require("./../../assets/default_avatar.jpg")} />
+                        {/*<img className="user-avatar" src={} alt=""/>*/}
+                        {/*<Link to="/login">登录</Link>*/}
+                        {/*<div>&nbsp;&nbsp;|&nbsp;&nbsp;</div>*/}
+                        {/*<Link to="/register">注册</Link>*/}
                     </div>
                 </div>
             </header>

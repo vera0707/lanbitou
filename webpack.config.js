@@ -82,12 +82,13 @@ module.exports = {
     //     }
     // },
     devServer: {
-        proxy:{
-            '': 'http://localhost:3000/',
-            secure: false,
-            changeOrigin: true
-        },
+        // proxy:{
+        //     '': 'http://localhost:3000/',
+        //     secure: false,
+        //     changeOrigin: true
+        // },
         contentBase: path.join(__dirname, 'dist'),
+        historyApiFallback: true,
         compress: true,
         open: true,
         host: 'localhost',

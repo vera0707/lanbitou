@@ -1,19 +1,30 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router,Route,Switch } from 'react-router-dom';
+import { IndexRoute,Router,Route,Switch } from 'react-router-dom';
 import { history } from './location';
 import './core.less';
 
 import { IndexComponent } from './pages/index/index';
-import { LoginComponent } from './pages/password/login';
+import { PasswordComponent } from './pages/password/password';
 import { ErrorComponent } from './pages/error/error';
 
-class mainRouter extends React.Component{
+class MainRouter extends React.Component{
+
     constructor(props){
         super(props);
+
+        window.fetch('/',{
+            method: 'POST',
+            headers: {"content-type": 'application/json; charset=utf-8'}
+        })
+            .then(response => response)
+            .catch(error =>  {console.log(error)} )
+            .then((rex) => { console.log(rex)})
     }
 
-    componentDidMount(){}
+    componentDidMount(){
+
+    }
 
 
 
@@ -25,23 +36,16 @@ class mainRouter extends React.Component{
 }
 
 
-const PasswordRouter = ()=>{
-    <div>
-        <Route path={`${match.url}/login`}  component={LoginComponent} />
-        <Route path={`${match.url}/register`}  component={LoginComponent} />
-    </div>
-};
-
-
-
 ReactDOM.render((
     <Router history={history}>
-        <Switch>
+        <MainRouter>
             <Route path="/index" component={IndexComponent} />
-            <Route exact path="/password/:type" component={ LoginComponent} />
-            <Route exact path="/" component={ LoginComponent} />
-            <Route path="*" component={ErrorComponent}/>
-        </Switch>
+            <Route path="/login" component={ PasswordComponent} />
+            <Route path={ "/password/login" } component={ PasswordComponent} />
+            <Route path="/register" component={ PasswordComponent} />
+            <Route exact path="/" component={ IndexComponent} />
+            <Route component={ErrorComponent}/>
+        </MainRouter>
     </Router>
 ),document.getElementById('lbt'));
 
