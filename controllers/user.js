@@ -13,18 +13,21 @@ let responseData = {
 let fn_login = async (ctx,next) =>{
     const { username,password } = ctx.request.body;
 
+
     if(!username || username.trim() == ""){
         responseData = {
             code: 400,
             message: "用户名不能为空",
             systemTime: getSystemDate()
-        }
+        };
+
     }else if(!password || password.trim() == ""){
         responseData = {
             code: 400,
             message: "用户名不能为空",
             systemTime: getSystemDate()
-        }
+        };
+
     }else{
         User.findOne({ username: username , password : password})
             .then((userInfo)=>{
@@ -34,11 +37,6 @@ let fn_login = async (ctx,next) =>{
                         message: `欢迎${username}回家`,
                         systemTime: getSystemDate()
                     };
-
-                    ctx.cookies.set('userInfo','lbt',{ username });
-                    console.log(ctx.cookies.get('userInfo'));
-                    console.log(ctx.cookies.get('lbt'));
-
                 }else{
                     responseData = {
                         code : 400,
@@ -46,10 +44,15 @@ let fn_login = async (ctx,next) =>{
                         systemTime: getSystemDate()
                     }
                 }
-            });
+
+                ctx.response.body = JSON.stringify(responseData);
+
+            })
     }
 
-    ctx.response.body = responseData;
+
+    ctx.response.body = JSON.stringify(responseData);
+
 };
 
 module.exports = {
