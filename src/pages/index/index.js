@@ -11,9 +11,13 @@ export class IndexComponent extends React.Component{
         super(props);
 
         const lbt = window.localStorage.getItem("lbt") ? JSON.parse(window.localStorage.getItem("lbt")) : {};
-        const editContent = lbt.editContent ? lbt.editContent : `welcome to [lanbitou] editor.`;
+        const editContent = lbt.editContent ? lbt.editContent : `welcome to [烂笔头] editor.
+
+**注**：当前还有很多功能正在开发，敬请期待——🚧
+@xieyuxuan        
+        `;
         const creationTime = lbt.creationTime ? lbt.creationTime : new Date();
-        const editName =  lbt.editName ? lbt.editName :  `Untitled Document`;
+        const editName =  lbt.editName ? lbt.editName :  `Default Document`;
 
 
         this.state = {
